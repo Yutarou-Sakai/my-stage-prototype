@@ -9,4 +9,24 @@
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    = yield
+    %nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+      .container
+        = link_to root_path, class: 'navbar-brand' do
+          my-stage
+        %button.navbar-toggler{"aria-controls" => "navbarNav", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarNav", "data-toggle" => "collapse", type: "button"}
+          %span.navbar-toggler-icon
+        #navbarNav.collapse.navbar-collapse
+          %ul.navbar-nav
+            %li.nav-item.active
+              = link_to courses_path, class: 'nav-link' do
+                コース一覧
+                %span.sr-only (current)
+            %li.nav-item
+              = link_to courses_path, class: 'nav-link' do
+                Features
+            %li.nav-item
+              = link_to courses_path, class: 'nav-link' do
+                Pricing
+
+    .container
+      = yield
