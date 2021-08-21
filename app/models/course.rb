@@ -9,8 +9,10 @@
 #  updated_at  :datetime         not null
 #
 class Course < ApplicationRecord
-  validate :title, presence: true
-  validate :description, presence: true, length: { :minimum => 5 }
+  validates :title, presence: true
+  validates :description, presence: true, length: { :minimum => 5 }
+
+  has_rich_text :description
 
   def to_s
     title
