@@ -1,3 +1,33 @@
 .jumbotron 
   .display-4
     What do you want to learn today?
+
+.card-group
+  .card.card-body
+    %h1
+      .fa.fa-graduation-cap
+    %p
+      #{Course.count} online courses.
+      %br>/
+      Explore a variety of fresh topics
+  .card.card-body
+    %h1
+      .fa.fa-chalkboard-teacher
+    %p
+      #{Course.distinct.count(:user_id)} expert instructors.
+      %br>/
+      Find the right instructor for you
+  .card.card-body
+    %h1
+      .fa.fa-user-graduate
+    %p
+      #{User.count} active learners
+      %br>/
+      Join the knowledge sharing community
+  .card.card-body
+    %h1
+      .fa.fa-infinity
+    %p 
+      Lifetime access
+      %br>/
+      Learn on your schedule
