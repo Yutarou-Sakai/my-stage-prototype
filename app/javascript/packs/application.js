@@ -17,7 +17,6 @@ require("@fortawesome/fontawesome-free");
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-import 'jquery'
 import 'bootstrap'
 import '@fortawesome/fontawesome-free/js/all';
 import "../stylesheets/application.scss";
