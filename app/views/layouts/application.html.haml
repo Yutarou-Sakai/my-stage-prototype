@@ -35,6 +35,5 @@
               = link_to 'login', new_user_session_path, class: 'btn btn-outline-light btn-sm mx-1'
 
     .container.mt-5
-      %p.notice= notice
-      %p.alert= alert
+      = render 'commons/messages'
       = yield
