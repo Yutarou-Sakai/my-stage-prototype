@@ -4,9 +4,10 @@
 // that code so it'll be compiled.
 
 require("@rails/ujs").start()
-require("turbolinks").start()
+// require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+require("@fortawesome/fontawesome-free");
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -16,11 +17,10 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+import 'jquery'
+import 'bootstrap'
+import '@fortawesome/fontawesome-free/js/all';
+import "../stylesheets/application.scss";
 
-import 'bootstrap/dist/js/bootstrap'
-import 'bootstrap/dist/css/bootstrap'
-require("stylesheets/application.scss")
-
-import "@fortawesome/fontawesome-free/css/all"
 require("trix")
 require("@rails/actiontext")
