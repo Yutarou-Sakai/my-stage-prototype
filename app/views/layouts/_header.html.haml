@@ -8,10 +8,10 @@
       %ul.navbar-nav
         %li.nav-item
           = link_to courses_path, class: "nav-link #{ 'active font-weight-bold' if current_page?(courses_path) }" do
-            コース一覧
+            Courses
         %li.nav-item
-          = link_to courses_path, class: 'nav-link' do
-            Features
+          = link_to new_course_path, class: 'nav-link' do
+            New Course
         %li.nav-item
           = link_to courses_path, class: 'nav-link' do
             Pricing
