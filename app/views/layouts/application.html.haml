@@ -5,9 +5,9 @@
     %title Myapp
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'application'
+    = stylesheet_pack_tag 'application'
+    = javascript_pack_tag 'application'
   %body
     %nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
       .container
@@ -17,10 +17,9 @@
           %span.navbar-toggler-icon
         #navbarNav.collapse.navbar-collapse.d-flex.justify-content-between
           %ul.navbar-nav
-            %li.nav-item.active
-              = link_to courses_path, class: 'nav-link' do
+            %li.nav-item
+              = link_to courses_path, class: "nav-link #{ 'active font-weight-bold' if current_page?(courses_path) }" do
                 コース一覧
-                %span.sr-only (current)
             %li.nav-item
               = link_to courses_path, class: 'nav-link' do
                 Features
