@@ -1,8 +1,7 @@
-%p#notice= notice
 %h1
   Courses：全#{@courses.count}コース
-
-= link_to 'Create New Course', new_course_path, class: 'btn btn-outline-dark my-3'
+- if user_signed_in?
+  = link_to 'Create New Course', new_course_path, class: 'btn btn-outline-dark my-3'
 
 %table.table
   %thead
