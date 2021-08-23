@@ -2,13 +2,18 @@
 #
 # Table name: courses
 #
-#  id          :bigint           not null, primary key
-#  description :text
-#  slug        :string
-#  title       :string
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  user_id     :bigint           not null
+#  id                :bigint           not null, primary key
+#  course_url        :string
+#  description       :text
+#  language          :string           default("Ruby"), not null
+#  level             :string           default("Beginner"), not null
+#  price             :integer          default(0), not null
+#  short_descriotion :text
+#  slug              :string
+#  title             :string
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  user_id           :bigint           not null
 #
 # Indexes
 #
