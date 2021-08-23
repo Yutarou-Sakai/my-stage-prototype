@@ -6,3 +6,9 @@
     Signed up
     = time_ago_in_words(user.created_at)
     ago
+  .card-footer
+    %p #{"sign_in_count".humanize}：#{user.sign_in_count}
+    %p #{"current_sign_in_at".humanize}：#{user.current_sign_in_at}
+    %p #{"last_sign_in_at".humanize}：#{user.last_sign_in_at}
+    %p #{"current_sign_in_ip".humanize}：#{user.current_sign_in_ip}
+    %p #{"last_sign_in_ip".humanize}：#{user.last_sign_in_ip}
