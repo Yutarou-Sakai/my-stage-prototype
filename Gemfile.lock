@@ -94,6 +94,8 @@ GEM
     faker (2.18.0)
       i18n (>= 1.6, < 2)
     ffi (1.15.3)
+    friendly_id (5.2.5)
+      activerecord (>= 4.0.0)
     globalid (0.5.2)
       activesupport (>= 5.0)
     haml (5.2.2)
@@ -235,9 +237,6 @@ GEM
     thor (1.1.0)
     thread_safe (0.3.6)
     tilt (2.0.10)
-    turbolinks (5.2.1)
-      turbolinks-source (~> 5.2)
-    turbolinks-source (5.2.0)
     tzinfo (1.2.9)
       thread_safe (~> 0.1)
     unicode-display_width (2.0.0)
@@ -274,6 +273,7 @@ DEPENDENCIES
   devise
   erb2haml
   faker
+  friendly_id (~> 5.2.4)
   hamlit
   jbuilder (~> 2.7)
   listen (~> 3.2)
@@ -287,7 +287,6 @@ DEPENDENCIES
   simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
-  turbolinks (~> 5)
   tzinfo-data
   web-console (>= 3.3.0)
   webdrivers
