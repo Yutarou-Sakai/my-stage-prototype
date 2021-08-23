@@ -10,11 +10,11 @@
           = link_to courses_path, class: "nav-link #{ 'active font-weight-bold' if current_page?(courses_path) }" do
             Courses
         %li.nav-item
-          = link_to new_course_path, class: "nav-link #{ 'active font-weight-bold' if current_page?(new_course_path) }" do
-            New Course
-        %li.nav-item
           = link_to users_path, class: "nav-link #{ 'active font-weight-bold' if current_page?(users_path) }" do
             Users
+        %li.nav-item
+          = link_to activities_path, class: "nav-link #{ 'active font-weight-bold' if current_page?(activities_path) }" do
+            Activity
       .login-btn
         - if user_signed_in?
           = link_to 'logout', destroy_user_session_path, data: { method: 'delete' }, class: 'btn btn-outline-light btn-sm mx-1'
