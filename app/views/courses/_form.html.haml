@@ -7,7 +7,7 @@
     = f.rich_text_area :description
     = f.input :short_descriotion
     = f.input :language
-    = f.input :level
+    = f.input :level, collection: ['Beginner', 'Standard', 'Pro']
     = f.input :price
     = f.input :course_url
   .form-actions
