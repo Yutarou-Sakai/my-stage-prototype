@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :home, only: [:index]
   resources :users, only: [:index]
   resources :courses
+  resources :activities, only: [:index]
 end
