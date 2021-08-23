@@ -31,7 +31,7 @@ class Course < ApplicationRecord
   has_rich_text :description
 
   include FriendlyId
-  friendly_id :title, use: [:slugged, :history]
+  friendly_id :course_url, use: [:slugged, :history]
 
   belongs_to :user
 
