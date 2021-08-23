@@ -43,4 +43,9 @@ class Course < ApplicationRecord
   def should_generate_new_friendly_id?
     title_changed?
   end
+
+  LEVELS = [:'Beginner', :'Standard', :'Pro']
+  def self.levels
+    LEVELS.map { |level| [level, level] }
+  end
 end
