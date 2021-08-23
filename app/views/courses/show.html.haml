@@ -6,6 +6,11 @@
     %blockquote.blockquote.mb-0
       %strong Description:
       = @course.description
-      .card-btn.text-end
-        = link_to 'Edit', edit_course_path(@course), class: 'btn btn-outline-success m-3'
+      %small= @course.short_descriotion
+  .card-footer 
+    %span.badge.badge-pill.badge-info= @course.language
+    %span.badge.badge-pill.badge-success= @course.level
+    %p= number_to_currency(@course.price, unit: "￥", precision: 0)
+
+= link_to 'Edit', edit_course_path(@course), class: 'btn btn-outline-success m-3'
 = link_to 'Back', courses_path, class: 'btn btn-outline-dark m-3'
