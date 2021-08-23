@@ -15,14 +15,6 @@
         %li.nav-item
           = link_to users_path, class: "nav-link #{ 'active font-weight-bold' if current_page?(users_path) }" do
             Users
-      - if current_page?(courses_path)
-        .form-inline.my-2.my-lg-0
-          = form_tag(courses_path, method: :get) do
-            .input-group
-              = text_field_tag :title, params[:title], autocomplete: 'off', placeholder: "Search", class: 'form-control'
-              %span.input-group-append
-                %button.btn.btn-outline-success.my-2.my-sm-0{:type => "submit"}
-                  %span.fa.fa-search{"aria-hidden" => "true"}
       .login-btn
         - if user_signed_in?
           = link_to 'logout', destroy_user_session_path, data: { method: 'delete' }, class: 'btn btn-outline-light btn-sm mx-1'
