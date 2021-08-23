@@ -10,11 +10,11 @@
           = link_to courses_path, class: "nav-link #{ 'active font-weight-bold' if current_page?(courses_path) }" do
             Courses
         %li.nav-item
-          = link_to new_course_path, class: 'nav-link' do
+          = link_to new_course_path, class: "nav-link #{ 'active font-weight-bold' if current_page?(new_course_path) }" do
             New Course
         %li.nav-item
-          = link_to courses_path, class: 'nav-link' do
-            Pricing
+          = link_to users_path, class: "nav-link #{ 'active font-weight-bold' if current_page?(users_path) }" do
+            Users
       - if current_page?(courses_path)
         .form-inline.my-2.my-lg-0
           = form_tag(courses_path, method: :get) do
