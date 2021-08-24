@@ -16,6 +16,7 @@
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
 #  sign_in_count          :integer          default(0), not null
+#  slug                   :string
 #  unconfirmed_email      :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
@@ -25,6 +26,7 @@
 #  index_users_on_confirmation_token    (confirmation_token) UNIQUE
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
+#  index_users_on_slug                  (slug) UNIQUE
 #
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
@@ -35,6 +37,21 @@ class User < ApplicationRecord
   has_many :courses,  dependent: :destroy
 
   rolify
+
+
+  # == friendly_id ==
+  include FriendlyId
+  friendly_id :email, use: [:slugged, :history]
+
+  def should_generate_new_friendly_id?
+    email_changed?
+  end
+  # == friendly_id ==
+
+
+  def online?
+    updated_at > 2.minutes.ago
+  end
 
   # 新規ユーザーのデフォルト設定
   after_create :assign_default_role
