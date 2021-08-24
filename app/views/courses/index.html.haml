@@ -21,6 +21,7 @@
       %th Language
       %th Title
       %th Description
+      %th Lessons
       %th{:colspan => "3"}
   %tbody
     - @courses.each do |course|
@@ -31,6 +32,9 @@
           = course.title
         %td
           = course.description
+        %td
+          = course.lessons.count
+
         %td= link_to 'Show', course, class: 'btn btn-outline-info btn-sm'
         - if current_user && current_user.has_role?(:admin) || current_user && current_user.has_role?(:teacher)
           %td= link_to 'Edit', edit_course_path(course), class: 'btn btn-outline-success btn-sm'

@@ -4,6 +4,7 @@
 #
 #  id         :bigint           not null, primary key
 #  content    :text
+#  slug       :string
 #  title      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -12,6 +13,7 @@
 # Indexes
 #
 #  index_lessons_on_course_id  (course_id)
+#  index_lessons_on_slug       (slug) UNIQUE
 #
 # Foreign Keys
 #
