@@ -38,12 +38,16 @@ class User < ApplicationRecord
 
   rolify
 
+
+  # == friendly_id ==
   include FriendlyId
   friendly_id :email, use: [:slugged, :history]
 
   def should_generate_new_friendly_id?
     email_changed?
   end
+  # == friendly_id ==
+
 
   def online?
     updated_at > 2.minutes.ago
