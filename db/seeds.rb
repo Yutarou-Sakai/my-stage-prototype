@@ -1,3 +1,5 @@
+PublicActivity.enabled = false
+
 User.create!(email: 'admin@adimn.com', password: '123456', password_confirmation: '123456')
 User.create!(email: 'test@test.com', password: '123456', password_confirmation: '123456')
 
@@ -11,3 +13,5 @@ User.create!(email: 'test@test.com', password: '123456', password_confirmation: 
     user_id: User.first.id
   }])
 end
+
+PublicActivity.enabled = true
