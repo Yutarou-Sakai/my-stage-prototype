@@ -15,3 +15,11 @@
 - if current_user && current_user.has_role?(:admin) || current_user && current_user.has_role?(:teacher)
   = link_to 'Edit', edit_course_path(@course), class: 'btn btn-outline-success m-3'
 = link_to 'Back', courses_path, class: 'btn btn-outline-dark m-3'
+
+.row.mt-4
+  .col-md-3
+    %h2 #{@lessons.count} Lessons
+  .col-md-9
+    = link_to 'Add Lesson', new_lesson_path, class: 'btn btn-outline-dark'
+
+= render 'lessons/lessons', lessons: @lessons
