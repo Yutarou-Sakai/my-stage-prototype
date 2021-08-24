@@ -45,6 +45,10 @@ class User < ApplicationRecord
     email_changed?
   end
 
+  def online?
+    updated_at > 2.minutes.ago
+  end
+
   # 新規ユーザーのデフォルト設定
   after_create :assign_default_role
   def assign_default_role
