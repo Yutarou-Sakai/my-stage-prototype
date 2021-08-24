@@ -29,16 +29,11 @@ class Course < ApplicationRecord
   validates :description, presence: true, length: { :minimum => 5 }
   validates :course_url, uniqueness: true
 
+  belongs_to :user
   has_rich_text :description
 
   include FriendlyId
   friendly_id :course_url, use: [:slugged, :history]
-
-  belongs_to :user
-
-  def to_s
-    title
-  end
 
   def should_generate_new_friendly_id?
     title_changed?
