@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update]
+  before_action :has_admin?, only: [:index, :edit, :update]
 
   def index
     @q = User.ransack(params[:q])
@@ -24,5 +25,11 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit({role_ids: []})
+  end
+
+  def has_admin?
+    unless current_user.has_role?(:admin)
+      redirect_to root_path
+    end
   end
 end

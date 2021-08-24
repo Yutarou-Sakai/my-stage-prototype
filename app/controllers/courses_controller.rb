@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: %i[ show edit update destroy ]
+  before_action :set_course, only: [ :show, :edit, :update, :destroy ]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :has_admin_or_teacher?, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @ransack_courses = Course.ransack(params[:courses_search], search_key: :courses_search)
@@ -67,5 +68,11 @@ class CoursesController < ApplicationController
         :price,
         :course_url
       )
+    end
+
+    def has_admin_or_teacher?
+      unless current_user.has_role?(:admin) || current_user.has_role?(:teacher)
+        redirect_to root_path
+      end
     end
 end
