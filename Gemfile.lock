@@ -195,6 +195,7 @@ GEM
       actionpack (>= 5.0)
       railties (>= 5.0)
     rexml (3.2.5)
+    rolify (6.0.0)
     rubocop (1.19.1)
       parallel (~> 1.10)
       parser (>= 3.0.0.0)
@@ -292,6 +293,7 @@ DEPENDENCIES
   rails (~> 6.0.4, >= 6.0.4.1)
   rails-flog
   ransack
+  rolify
   rubocop-rails
   sass-rails (>= 6)
   selenium-webdriver
