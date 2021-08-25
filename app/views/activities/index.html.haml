@@ -4,13 +4,30 @@
     .badge.badge-info
       = @activities.count
 
-%ul.list-group
-  - @activities.each do |activity|
-    %li.list-group-item
-      = activity.id
-      = activity.trackable_type
-      = activity.trackable_id
-      = link_to activity.trackable, activity.trackable
-      = activity.key
-      = activity.parameters
-      = activity.owner_id
+%table.table
+  %thead
+    %tr
+      %th ID
+      %th trackable_type
+      %th Trackable_id
+      %th Title
+      %th key
+      %th parameters
+      %th owner_id
+  %tbody
+    - @activities.each do |activity|
+      %tr
+        %td
+          = activity.id
+        %td
+          .badge.badge-pill.badge-info= activity.trackable_type
+        %td
+          = activity.trackable_id
+        %td
+          = link_to activity.trackable, activity.trackable
+        %td
+          = activity.key
+        %td
+          = activity.parameters
+        %td
+          = activity.owner_id

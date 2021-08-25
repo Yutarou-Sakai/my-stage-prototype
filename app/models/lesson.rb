@@ -33,4 +33,13 @@ class Lesson < ApplicationRecord
     title_changed?
   end
   # == friendly_id ==
+
+  # == public_activity ==
+  include PublicActivity::Model
+  tracked owner: proc { |controller, model| controller.current_user }
+
+  def to_s
+    title
+  end
+  # == public_activity ==
 end
