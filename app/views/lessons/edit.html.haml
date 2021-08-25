@@ -1,5 +1,5 @@
 %h1 Editing Lesson
-= render 'form', lesson: @lesson
-= link_to 'Show', @lesson
-|
-= link_to 'Back', lessons_path
+= render 'form', course: @course, lesson: @lesson
+
+= link_to 'Show', course_lesson_path(@course, @lesson), class: 'btn btn-outline-info'
+= link_to 'Back', :back, class: 'btn btn-outline-dark mx-3'

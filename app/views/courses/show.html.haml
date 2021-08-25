@@ -1,3 +1,15 @@
+- content_for :title do
+  web-stage
+  \|
+  = @course.title
+
+%nav{"aria-label" => "breadcrumb"}
+  %ol.breadcrumb
+    %li.breadcrumb-item
+      = link_to 'Courses', courses_path
+    %li.breadcrumb-item.active{"aria-current" => "page"}
+      = @course.title
+
 .card
   .card-header
     %strong Title:
@@ -20,6 +32,6 @@
   .col-md-3
     %h2 #{@lessons.count} Lessons
   .col-md-9
-    = link_to 'Add Lesson', new_lesson_path(course_id: @course.id), class: 'btn btn-outline-dark'
+    = link_to 'Add Lesson', new_course_lesson_path(@course, @lesson), class: 'btn btn-outline-dark'
 
-= render 'lessons/lessons', lessons: @lessons
+= render 'lessons/lessons', lessons: @lessons, course: @course
