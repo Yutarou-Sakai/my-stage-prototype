@@ -7,5 +7,5 @@
   .card-body
     %p 【Content】#{@lesson.content}
   .card-footer
-    = link_to 'Edit', edit_course_lesson_path(@lesson), class: 'btn btn-outline-dark'
+    = link_to 'Edit', edit_course_lesson_path(@course, @lesson), class: 'btn btn-outline-success'
     = link_to 'Back', :back, class: 'btn btn-outline-dark m-2'
