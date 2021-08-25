@@ -21,6 +21,7 @@
 #
 class Lesson < ApplicationRecord
   belongs_to :course
+  has_rich_text :content
 
   validates :title, :content, :course, presence: true
 
@@ -33,4 +34,13 @@ class Lesson < ApplicationRecord
     title_changed?
   end
   # == friendly_id ==
+
+  # == public_activity ==
+  include PublicActivity::Model
+  tracked owner: proc { |controller, model| controller.current_user }
+
+  def to_s
+    title
+  end
+  # == public_activity ==
 end

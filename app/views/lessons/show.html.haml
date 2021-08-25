@@ -1,0 +1,12 @@
+.card 
+  .card-header
+    %strong Title:
+    = @lesson.title
+  .card-body
+    %strong Content:
+    = @lesson.content
+    %strong Course:
+    = @lesson.course.title
+  .card-footer
+    = link_to 'Edit', edit_lesson_path(@lesson), class: 'btn btn-outline-dark'
+    = link_to 'Back', :back, class: 'btn btn-outline-dark m-2'

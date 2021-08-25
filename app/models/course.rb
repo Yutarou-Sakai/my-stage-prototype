@@ -42,13 +42,19 @@ class Course < ApplicationRecord
     course_url_changed?
   end
   # == friendly_id ==
+  
+  # == public_activity ==
+  include PublicActivity::Model
+  tracked owner: proc { |controller, model| controller.current_user }
+
+  def to_s
+    title
+  end
+  # == public_activity ==
 
 
   LEVELS = [:'Beginner', :'Standard', :'Pro']
   def self.levels
     LEVELS.map { |level| [level, level] }
   end
-
-  include PublicActivity::Model
-  tracked owner: proc { |controller, model| controller.current_user }
 end
