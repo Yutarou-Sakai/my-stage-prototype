@@ -20,6 +20,6 @@
   .col-md-3
     %h2 #{@lessons.count} Lessons
   .col-md-9
-    = link_to 'Add Lesson', new_lesson_path, class: 'btn btn-outline-dark'
+    = link_to 'Add Lesson', new_lesson_path(course_id: @course.id), class: 'btn btn-outline-dark'
 
 = render 'lessons/lessons', lessons: @lessons

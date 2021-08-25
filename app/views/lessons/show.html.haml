@@ -1,0 +1,13 @@
+%p#notice= notice
+%p
+  %strong Title:
+  = @lesson.title
+%p
+  %strong Content:
+  = @lesson.content
+%p
+  %strong Course:
+  = @lesson.course_id
+= link_to 'Edit', edit_lesson_path(@lesson)
+|
+= link_to 'Back', lessons_path
