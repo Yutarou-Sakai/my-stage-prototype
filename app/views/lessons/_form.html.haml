@@ -5,6 +5,5 @@
     = f.input :title
     = f.label :content
     = f.rich_text_area :content
-    = f.input :course_id, input_html: { value: @lesson.course_id || params[:course_id] }, as: :hidden
   .form-actions
     = f.button :submit, class: 'btn btn-outline-success my-3'
