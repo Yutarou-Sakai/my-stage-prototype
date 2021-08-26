@@ -14,6 +14,6 @@
 %p
   %strong Price:
   = @enrollment.price
-= link_to 'Edit', edit_enrollment_path(@enrollment)
+= link_to 'Edit', edit_user_enrollment_path(@user, @enrollment)
 |
-= link_to 'Back', enrollments_path
+= link_to 'Back', user_enrollments_path(@user)

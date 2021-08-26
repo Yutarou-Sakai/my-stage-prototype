@@ -1,4 +1,4 @@
-= simple_form_for(@enrollment) do |f|
+= simple_form_for([user, enrollment]) do |f|
   = f.error_notification
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
   .form-inputs
@@ -8,4 +8,4 @@
     = f.input :review
     = f.input :price
   .form-actions
-    = f.button :submit
+    = f.button :submit, class: 'btn btn-outline-success my-3'

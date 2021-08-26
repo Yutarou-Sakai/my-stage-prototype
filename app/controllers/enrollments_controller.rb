@@ -1,9 +1,9 @@
 class EnrollmentsController < ApplicationController
   before_action :set_enrollment, only: %i[ show edit update destroy ]
+  before_action :set_user
 
   def index
     @enrollments = Enrollment.all
-    @user = User.friendly.find(params[:user_id])
   end
 
   def show
@@ -18,10 +18,10 @@ class EnrollmentsController < ApplicationController
 
   def create
     @enrollment = Enrollment.new(enrollment_params)
-
+    # @enrollment.user_id = @user.id
     respond_to do |format|
       if @enrollment.save
-        format.html { redirect_to @enrollment, notice: 'Enrollment was successfully created.' }
+        format.html { redirect_to user_enrollment_path(@user, @enrollment), notice: 'Enrollment was successfully created.' }
         format.json { render :show, status: :created, location: @enrollment }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -33,7 +33,7 @@ class EnrollmentsController < ApplicationController
   def update
     respond_to do |format|
       if @enrollment.update(enrollment_params)
-        format.html { redirect_to @enrollment, notice: 'Enrollment was successfully updated.' }
+        format.html { redirect_to user_enrollment_path(@@user, @enrollment), notice: 'Enrollment was successfully updated.' }
         format.json { render :show, status: :ok, location: @enrollment }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -45,7 +45,7 @@ class EnrollmentsController < ApplicationController
   def destroy
     @enrollment.destroy
     respond_to do |format|
-      format.html { redirect_to enrollments_url, notice: 'Enrollment was successfully destroyed.' }
+      format.html { redirect_to user_enrollments_path(@user), notice: 'Enrollment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -53,6 +53,10 @@ class EnrollmentsController < ApplicationController
   private
     def set_enrollment
       @enrollment = Enrollment.find(params[:id])
+    end
+
+    def set_user
+      @user = User.friendly.find(params[:user_id])
     end
 
     def enrollment_params
