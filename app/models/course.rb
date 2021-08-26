@@ -33,16 +33,15 @@ class Course < ApplicationRecord
   has_many :lessons,  dependent: :destroy
   has_rich_text :description
 
-
   # == friendly_id ==
   include FriendlyId
   friendly_id :course_url, use: [:slugged, :history]
-  
+
   def should_generate_new_friendly_id?
     course_url_changed?
   end
   # == friendly_id ==
-  
+
   # == public_activity ==
   include PublicActivity::Model
   tracked owner: proc { |controller, model| controller.current_user }
@@ -51,7 +50,6 @@ class Course < ApplicationRecord
     title
   end
   # == public_activity ==
-
 
   LEVELS = [:'Beginner', :'Standard', :'Pro']
   def self.levels

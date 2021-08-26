@@ -33,11 +33,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :validatable, :trackable
-  
+
   has_many :courses,  dependent: :destroy
 
   rolify
-
 
   # == friendly_id ==
   include FriendlyId
@@ -47,7 +46,6 @@ class User < ApplicationRecord
     email_changed?
   end
   # == friendly_id ==
-
 
   def online?
     updated_at > 2.minutes.ago
