@@ -35,6 +35,7 @@ class User < ApplicationRecord
   :recoverable, :rememberable, :validatable, :trackable
 
   has_many :courses,  dependent: :destroy
+  has_many :enrollments,  dependent: :destroy
 
   rolify
 
