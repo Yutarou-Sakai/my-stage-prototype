@@ -3,7 +3,7 @@ class EnrollmentsController < ApplicationController
   before_action :set_user
 
   def index
-    @enrollments = Enrollment.all
+    @enrollments = Enrollment.where(user_id: @user.id)
   end
 
   def show
@@ -18,7 +18,7 @@ class EnrollmentsController < ApplicationController
 
   def create
     @enrollment = Enrollment.new(enrollment_params)
-    # @enrollment.user_id = @user.id
+    @enrollment.price = @enrollment.course.price
     respond_to do |format|
       if @enrollment.save
         format.html { redirect_to user_enrollment_path(@user, @enrollment), notice: 'Enrollment was successfully created.' }
@@ -60,6 +60,6 @@ class EnrollmentsController < ApplicationController
     end
 
     def enrollment_params
-      params.require(:enrollment).permit(:course_id, :user_id, :rating, :review, :price)
+      params.require(:enrollment).permit(:course_id, :user_id, :rating, :review)
     end
 end
