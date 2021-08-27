@@ -34,4 +34,10 @@ module CoursesHelper
       return true
     end
   end
+
+  def has_voice?(voice)
+    if voice.rating.present? && voice.review.present?
+      return true
+    end
+  end
 end

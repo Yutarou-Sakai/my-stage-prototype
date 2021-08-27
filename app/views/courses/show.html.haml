@@ -27,7 +27,7 @@
 
 - if admin_or_my_course?
   = link_to 'Edit', edit_course_path(@course), class: 'btn btn-outline-success m-3'
-= link_to 'Back', courses_path, class: 'btn btn-outline-dark m-3'
+= link_to 'Back', :back, class: 'btn btn-outline-dark m-3'
 
 .row.mt-4
   .col-md-3
@@ -41,8 +41,9 @@
 %h2.mt-5.mb-3 Students' Voices
 .students-voices.mb-5
   - @voices.each do |voice|
-    %p
-      %span.font-weight-bold= voice.user.username 
-      %span.text-warning= star_rating(voice.rating)
-    %p= voice.review
+    - if has_voice?(voice)
+      %p
+        %span.font-weight-bold= voice.user.username 
+        %span.text-warning= star_rating(voice.rating)
+      %p= voice.review
   %hr
