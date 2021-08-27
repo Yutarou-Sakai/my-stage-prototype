@@ -9,6 +9,10 @@
         %li.nav-item
           = link_to courses_path, class: "nav-link #{ 'active font-weight-bold' if current_page?(courses_path) }" do
             Courses
+        - if current_user
+          %li.nav-item
+            = link_to user_enrollments_path(current_user), class: "nav-link #{ 'active font-weight-bold' if current_page?(user_enrollments_path(current_user)) }" do
+              Enrollments
         - if current_user && current_user.has_role?(:admin)
           %li.nav-item
             = link_to users_path, class: "nav-link #{ 'active font-weight-bold' if current_page?(users_path) }" do
