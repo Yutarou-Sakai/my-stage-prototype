@@ -4,7 +4,7 @@ module CoursesHelper
       if course.user == current_user
         link_to "You created this course.", course_path(course), class: 'btn btn-outline-info m-3'
       elsif course.enrollments.where(user: current_user).any?
-        link_to "Now let's start learning!!", course_path(course)
+        "Now let's start learning!!"
       elsif course.price > 0
         link_to "Buy now", new_course_enrollment_path(course), class: 'btn btn-outline-danger'
       else
