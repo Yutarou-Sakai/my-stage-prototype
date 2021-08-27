@@ -20,3 +20,6 @@
           - if enrollment.review.present?
             = link_to 'Edit review', edit_enrollment_path(enrollment), class: 'btn btn-outline-success btn-sm'
         %td= link_to 'Release', enrollment_path(enrollment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger btn-sm'
+
+.pagenation
+  != pagy_bootstrap_nav(@pagy)

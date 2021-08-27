@@ -4,8 +4,9 @@ class EnrollmentsController < ApplicationController
 
   def index
     user = current_user
-    @enrollments = Enrollment.where(user_id: user.id)
-    # @enrollments = Enrollment.all
+
+    @my_enrollments = Enrollment.where(user_id: user.id)
+    @pagy, @enrollments = pagy(@my_enrollments.order(updated_at: :DESC))
   end
 
   def show

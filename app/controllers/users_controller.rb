@@ -4,7 +4,6 @@ class UsersController < ApplicationController
 
   def index
     @ransack_users = User.ransack(params[:q])
-    # @users = @ransack_users.result(distinct: true)
     @pagy, @users = pagy(@ransack_users.result(distinct: true).order(updated_at: :DESC))
   end
 
