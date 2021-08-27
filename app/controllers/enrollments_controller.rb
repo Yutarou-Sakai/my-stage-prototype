@@ -3,8 +3,9 @@ class EnrollmentsController < ApplicationController
   before_action :set_course, only: %i[ new create ]
 
   def index
-    # @enrollments = Enrollment.where(user_id: @user.id)
-    @enrollments = Enrollment.all
+    user = current_user
+    @enrollments = Enrollment.where(user_id: user.id)
+    # @enrollments = Enrollment.all
   end
 
   def show
@@ -50,10 +51,6 @@ class EnrollmentsController < ApplicationController
   private
     def set_enrollment
       @enrollment = Enrollment.find(params[:id])
-    end
-
-    def set_user
-      @user = User.friendly.find(params[:user_id])
     end
 
     def set_course
