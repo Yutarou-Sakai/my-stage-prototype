@@ -17,8 +17,6 @@
         %td= enrollment.rating
         %td= enrollment.review
         %td= enrollment.price
-        %td= link_to 'Show', user_enrollment_path(@user, enrollment)
-        %td= link_to 'Edit', edit_user_enrollment_path(@user, enrollment)
-        %td= link_to 'Destroy', user_enrollment_path(@user, enrollment), method: :delete, data: { confirm: 'Are you sure?' }
-%br/
-= link_to 'New Enrollment', new_user_enrollment_path(@user)
+        %td= link_to 'Show', course_path(enrollment.course_id)
+        %td= link_to 'Edit', edit_enrollment_path(enrollment)
+        %td= link_to 'Destroy', enrollment_path(enrollment), method: :delete, data: { confirm: 'Are you sure?' }

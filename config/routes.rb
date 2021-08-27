@@ -5,11 +5,11 @@ Rails.application.routes.draw do
   
   resources :home, only: [:index]
   resources :activities, only: [:index]
-  
-  resources :users, only: [:index, :show, :edit, :update] do
-    resources :enrollments
-  end
+  resources :users, only: [:index, :show, :edit, :update]
+  resources :enrollments
+
   resources :courses do
     resources :lessons
+    resources :enrollments, only: [:new, :create]
   end
 end
