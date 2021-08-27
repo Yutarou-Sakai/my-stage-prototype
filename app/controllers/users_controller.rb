@@ -3,8 +3,8 @@ class UsersController < ApplicationController
   before_action :has_admin?, only: [:index, :show, :edit, :update]
 
   def index
-    @q = User.ransack(params[:q])
-    @users = @q.result(distinct: true)
+    @ransack_users = User.ransack(params[:q])
+    @pagy, @users = pagy(@ransack_users.result(distinct: true).order(updated_at: :DESC))
   end
 
   def show

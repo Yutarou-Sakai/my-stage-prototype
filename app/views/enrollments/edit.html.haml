@@ -1,5 +1,4 @@
-%h1 Editing Enrollment
+%h1 Add review
 = render 'form', user: @user, enrollment: @enrollment
-= link_to 'Show', user_enrollment_path(@user, @enrollment)
-|
-= link_to 'Back', :back
+
+= link_to 'Back', :back, class: 'btn btn-outline-dark'

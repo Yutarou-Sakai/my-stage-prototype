@@ -1,24 +1,25 @@
 %p#notice= notice
 %h1 Enrollments
-%table
+%table.table
   %thead
     %tr
       %th Course
-      %th User
-      %th Rating
-      %th Review
-      %th Price
+      %th Teacher
       %th{:colspan => "3"}
   %tbody
     - @enrollments.each do |enrollment|
       %tr
-        %td= enrollment.course_id
-        %td= enrollment.user_id
-        %td= enrollment.rating
-        %td= enrollment.review
-        %td= enrollment.price
-        %td= link_to 'Show', user_enrollment_path(@user, enrollment)
-        %td= link_to 'Edit', edit_user_enrollment_path(@user, enrollment)
-        %td= link_to 'Destroy', user_enrollment_path(@user, enrollment), method: :delete, data: { confirm: 'Are you sure?' }
-%br/
-= link_to 'New Enrollment', new_user_enrollment_path(@user)
+        %td= link_to enrollment.course.title, course_path(enrollment.course)
+        %td= enrollment.course.user.username
+        %td
+          - if enrollment.review.present?
+            = link_to 'See review', course_path(enrollment.course_id), class: 'btn btn-outline-info btn-sm'
+          - else
+            = link_to 'Add review', edit_enrollment_path(enrollment), class: 'btn btn-outline-success btn-sm'
+        %td
+          - if enrollment.review.present?
+            = link_to 'Edit review', edit_enrollment_path(enrollment), class: 'btn btn-outline-success btn-sm'
+        %td= link_to 'Release', enrollment_path(enrollment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger btn-sm'
+
+.pagenation
+  != pagy_bootstrap_nav(@pagy)

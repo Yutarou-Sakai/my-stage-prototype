@@ -14,7 +14,7 @@
     = render 'users/user', user: user
 
 .form-inline.my-4
-  = search_form_for @q do |f|
+  = search_form_for @ransack_users do |f|
     = f.search_field :email_cont, placeholder: 'email', class: 'form-control'
     = f.search_field :sign_in_count_eq, placeholder: 'sign in count', class: 'form-control'
     = f.search_field :email_or_sign_in_count_eq, placeholder: 'email or sign in count', class: 'form-control'
@@ -25,7 +25,7 @@
   %thead
     %tr
       %th id
-      %th= sort_link(@q, :email)
+      %th= sort_link(@ransack_users, :email)
       %th created_at
       %th= 'sign_in_count'.humanize
       %th= 'current_sign_in_at'.humanize
@@ -43,3 +43,6 @@
         %td= user.last_sign_in_at
         %td= user.current_sign_in_ip
         %td= user.last_sign_in_ip
+
+.pagenation
+  != pagy_bootstrap_nav(@pagy)

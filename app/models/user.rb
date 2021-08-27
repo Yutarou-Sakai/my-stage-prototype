@@ -63,4 +63,12 @@ class User < ApplicationRecord
       self.add_role(:student) if self.roles.blank?
     end
   end
+
+  def buy_course(course)
+    self.enrollments.create(course: course, price: course.price)
+  end
+
+  def username
+    email.split(/@/).first
+  end
 end
