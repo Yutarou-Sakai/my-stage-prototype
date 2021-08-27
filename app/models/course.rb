@@ -58,6 +58,6 @@ class Course < ApplicationRecord
   end
 
   def bought_course(user)
-    self.enrollments.where(user_id: [user_id], course_id: [self.id].empty?)
+    self.enrollments.where(user_id: [user_id], course_id: [self.id]).empty?
   end
 end
