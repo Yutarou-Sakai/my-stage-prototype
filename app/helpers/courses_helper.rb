@@ -14,4 +14,24 @@ module CoursesHelper
       link_to "Buy now", new_user_session_path, class: 'btn btn-outline-danger'
     end
   end
+
+  def star_rating(rate)
+    star = ''
+    rate.times do
+      star += '★'
+    end
+    return star
+  end
+
+  def my_course?
+    if current_user && current_user.id == @course.user_id
+      return true
+    end
+  end
+
+  def admin_or_my_course?
+    if current_user && current_user.has_role?(:admin) ||  current_user && current_user.id == @course.user_id
+      return true
+    end
+  end
 end

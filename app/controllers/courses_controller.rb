@@ -10,6 +10,7 @@ class CoursesController < ApplicationController
 
   def show
     @lessons = @course.lessons.all
+    @voices = @course.enrollments.all
   end
 
   def new

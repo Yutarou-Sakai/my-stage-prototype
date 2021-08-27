@@ -16,4 +16,7 @@
             = link_to 'See review', course_path(enrollment.course_id), class: 'btn btn-outline-info btn-sm'
           - else
             = link_to 'Add review', edit_enrollment_path(enrollment), class: 'btn btn-outline-success btn-sm'
+        %td
+          - if enrollment.review.present?
+            = link_to 'Edit review', edit_enrollment_path(enrollment), class: 'btn btn-outline-success btn-sm'
         %td= link_to 'Release', enrollment_path(enrollment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger btn-sm'

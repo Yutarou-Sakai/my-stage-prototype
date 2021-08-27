@@ -25,7 +25,7 @@
     %p= number_to_currency(@course.price, unit: "￥", precision: 0)
     = enrollment_button(@course)
 
-- if current_user && current_user.has_role?(:admin) ||  current_user && current_user.id == @course.user_id
+- if admin_or_my_course?
   = link_to 'Edit', edit_course_path(@course), class: 'btn btn-outline-success m-3'
 = link_to 'Back', courses_path, class: 'btn btn-outline-dark m-3'
 
@@ -33,7 +33,16 @@
   .col-md-3
     %h2 #{@lessons.count} Lessons
   .col-md-9
-    - if current_user && current_user.id == @course.user_id
+    - if my_course?
       = link_to 'Add Lesson', new_course_lesson_path(@course, @lesson), class: 'btn btn-outline-dark'
 
 = render 'lessons/lessons', lessons: @lessons, course: @course
+
+%h2.mt-5.mb-3 Students' Voices
+.students-voices.mb-5
+  - @voices.each do |voice|
+    %p
+      %span.font-weight-bold= voice.user.username 
+      %span.text-warning= star_rating(voice.rating)
+    %p= voice.review
+  %hr
