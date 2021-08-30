@@ -3,6 +3,7 @@
 # Table name: courses
 #
 #  id                :bigint           not null, primary key
+#  average_rating    :float            default(0.0), not null
 #  course_url        :string
 #  description       :text
 #  language          :string           default("Ruby"), not null

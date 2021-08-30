@@ -24,6 +24,7 @@
   %thead
     %tr
       %th Language
+      %th Rating
       %th Title
       %th Description
       %th Lessons
@@ -33,6 +34,9 @@
       %tr
         %td
           %span.badge.badge-pill.badge-info= course.language
+        %td
+          %span.text-warning.fa.fa-star 
+          = course.average_rating
         %td
           = course.title
         %td
