@@ -47,6 +47,10 @@ class Enrollment < ApplicationRecord
   # == friendly_id ==
 
 
+  def enrollment_course_title
+    course.title
+  end
+
 
   protected
   def cant_subscribe_to_own_course

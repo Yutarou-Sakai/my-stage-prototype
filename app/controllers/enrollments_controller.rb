@@ -5,8 +5,10 @@ class EnrollmentsController < ApplicationController
   def index
     user = current_user
 
-    @my_enrollments = Enrollment.friendly.where(user_id: user.id)
-    @pagy, @enrollments = pagy(@my_enrollments.order(updated_at: :DESC))
+    @ransack_enrollments = Enrollment.ransack(params[:q])
+
+    # @my_enrollments = Enrollment.friendly.where(user_id: user.id)
+    @pagy, @enrollments = pagy(@ransack_enrollments.result(distinct: true).where(user_id: user.id).order(updated_at: :DESC))
   end
 
   def show

@@ -1,5 +1,12 @@
 %p#notice= notice
 %h1 Enrollments
+
+.form-inline.my-4
+  = search_form_for @ransack_enrollments do |f|
+    = f.search_field :course_title_cont, placeholder: 'title', class: 'form-control'
+    = f.submit class: 'btn btn-outline-primary'
+  = link_to 'refresh', enrollments_path, class: "btn btn-outline-dark mx-2"
+
 %table.table
   %thead
     %tr
