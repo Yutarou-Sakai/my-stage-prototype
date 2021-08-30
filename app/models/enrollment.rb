@@ -6,6 +6,7 @@
 #  price      :integer
 #  rating     :integer
 #  review     :text
+#  slug       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  course_id  :bigint           not null
@@ -14,6 +15,7 @@
 # Indexes
 #
 #  index_enrollments_on_course_id  (course_id)
+#  index_enrollments_on_slug       (slug) UNIQUE
 #  index_enrollments_on_user_id    (user_id)
 #
 # Foreign Keys
@@ -33,6 +35,23 @@ class Enrollment < ApplicationRecord
 
   # 自分が作ったコースを登録できない
   validate :cant_subscribe_to_own_course
+
+
+  # == friendly_id ==
+  include FriendlyId
+  friendly_id :course_url, use: :slugged
+
+  def course_url
+    course.course_url?
+  end
+  # == friendly_id ==
+
+
+  def enrollment_course_title
+    course.title
+  end
+
+
   protected
   def cant_subscribe_to_own_course
     if self.new_record?

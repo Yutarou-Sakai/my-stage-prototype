@@ -36,10 +36,10 @@ class Course < ApplicationRecord
 
   # == friendly_id ==
   include FriendlyId
-  friendly_id :course_url, use: [:slugged, :history]
+  friendly_id :course_url, use: :slugged
 
-  def should_generate_new_friendly_id?
-    course_url_changed?
+  def course_url?
+    course_url
   end
   # == friendly_id ==
 

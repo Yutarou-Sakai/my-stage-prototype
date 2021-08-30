@@ -6,6 +6,7 @@
 #  price      :integer
 #  rating     :integer
 #  review     :text
+#  slug       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  course_id  :bigint           not null
@@ -14,6 +15,7 @@
 # Indexes
 #
 #  index_enrollments_on_course_id  (course_id)
+#  index_enrollments_on_slug       (slug) UNIQUE
 #  index_enrollments_on_user_id    (user_id)
 #
 # Foreign Keys
