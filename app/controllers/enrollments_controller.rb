@@ -5,7 +5,7 @@ class EnrollmentsController < ApplicationController
   def index
     user = current_user
 
-    @my_enrollments = Enrollment.where(user_id: user.id)
+    @my_enrollments = Enrollment.friendly.where(user_id: user.id)
     @pagy, @enrollments = pagy(@my_enrollments.order(updated_at: :DESC))
   end
 
@@ -51,7 +51,7 @@ class EnrollmentsController < ApplicationController
 
   private
     def set_enrollment
-      @enrollment = Enrollment.find(params[:id])
+      @enrollment = Enrollment.friendly.find(params[:id])
     end
 
     def set_course

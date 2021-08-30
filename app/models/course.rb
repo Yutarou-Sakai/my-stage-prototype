@@ -41,6 +41,10 @@ class Course < ApplicationRecord
   def should_generate_new_friendly_id?
     course_url_changed?
   end
+
+  def course_url?
+    course_url
+  end
   # == friendly_id ==
 
   # == public_activity ==

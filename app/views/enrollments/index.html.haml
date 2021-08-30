@@ -13,7 +13,7 @@
         %td= enrollment.course.user.username
         %td
           - if enrollment.review.present?
-            = link_to 'See review', course_path(enrollment.course_id), class: 'btn btn-outline-info btn-sm'
+            = link_to 'See review', course_path(enrollment.course), class: 'btn btn-outline-info btn-sm'
           - else
             = link_to 'Add review', edit_enrollment_path(enrollment), class: 'btn btn-outline-success btn-sm'
         %td
