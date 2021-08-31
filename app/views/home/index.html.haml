@@ -31,3 +31,20 @@
       Lifetime access
       %br>/
       Learn on your schedule
+
+
+%h2.mt-5 Resume learning
+.card-columns 
+  - @courses.each do |course|
+    = link_to course_path(course), class: 'link-text-black' do
+      = render 'courses/course', course: course
+
+%h2.mt-5 Top rated courses
+.card-columns 
+  - @top_rated_courses.each do |course|
+    = render 'courses/course', course: course
+
+%h2.mt-5 Populaer courses
+.card-columns 
+  - @popular_courses.each do |course|
+    = render 'courses/course', course: course

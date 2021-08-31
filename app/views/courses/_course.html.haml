@@ -1,0 +1,18 @@
+.card
+  .card-header
+    %strong Title:
+    = course.title
+  .card-body
+    %blockquote.blockquote.mb-0
+      %strong Description:
+      = course.description
+      %small= course.short_descriotion
+  .card-footer 
+    %span.badge.badge-pill.badge-info= course.language
+    %span.badge.badge-pill.badge-success= course.level
+    %p.my-2
+      = number_to_currency(course.price, unit: "￥", precision: 0)
+      %span.text-warning.fa.fa-star 
+      = course.average_rating
+    %p.my-2 #{course.enrollments.count}人の受講生
+    = enrollment_button(course)

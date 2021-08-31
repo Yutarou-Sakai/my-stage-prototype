@@ -10,24 +10,7 @@
     %li.breadcrumb-item.active{"aria-current" => "page"}
       = @course.title
 
-.card
-  .card-header
-    %strong Title:
-    = @course.title
-  .card-body
-    %blockquote.blockquote.mb-0
-      %strong Description:
-      = @course.description
-      %small= @course.short_descriotion
-  .card-footer 
-    %span.badge.badge-pill.badge-info= @course.language
-    %span.badge.badge-pill.badge-success= @course.level
-    %p.my-2
-      = number_to_currency(@course.price, unit: "￥", precision: 0)
-      %span.text-warning.fa.fa-star 
-      = @course.average_rating
-    %p.my-2 #{@course.enrollments.count}人の受講生
-    = enrollment_button(@course)
+= render 'courses/course', course: @course
 
 - if admin_or_my_course?
   = link_to 'Edit', edit_course_path(@course), class: 'btn btn-outline-success m-3'
