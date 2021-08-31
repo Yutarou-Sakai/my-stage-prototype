@@ -26,6 +26,7 @@
       = number_to_currency(@course.price, unit: "￥", precision: 0)
       %span.text-warning.fa.fa-star 
       = @course.average_rating
+    %p.my-2 #{@course.enrollments.count}人の受講生
     = enrollment_button(@course)
 
 - if admin_or_my_course?
