@@ -24,6 +24,7 @@ class Lesson < ApplicationRecord
   has_rich_text :content
 
   validates :title, :content, :course, presence: true
+  validates :title, uniqueness: { scope: :course_id }
 
   # == friendly_id ==
   include FriendlyId
